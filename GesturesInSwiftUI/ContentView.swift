@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var offset = CGSize.zero
-    @State private var viewState = CGSize.zero
-    @State private var isShowing = false
-    @State private var appear = false
+    @State private var offsetCard = CGSize.zero
+    @State private var offsetBuy = CGSize.zero
+    @State private var isShowingDetale = false
+    @State private var showBuyView = false
+    @State private var appearDetale = false
     @Namespace var namespace
     
     var body: some View {
@@ -22,51 +23,64 @@ struct ContentView: View {
             VStack(spacing: 40) {
                 ZStack {
                     Card(color: .black, image: "10", namespace: namespace)
-                        .offset(offset)
-                        //                        .scaleEffect(getScaleAmount())
+                        .animation(.spring())
+                        .offset(offsetCard)
+//                        .scaleEffect(getScaleAmount())
                         .rotationEffect(Angle(degrees: getRotationAmount()))
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    withAnimation(.spring()) {
-                                        offset = value.translation
-                                    }
-                                    
+                                        offsetCard = value.translation
                                 }
                                 .onEnded { value in
                                     if value.translation.width > width / 2 {
-                                        withAnimation(.spring()) {
-                                            offset = CGSize(width: 1000, height: 1000)
-                                        }
+                                            offsetCard = CGSize(width: 1000, height: 1000)
                                     } else {
-                                        withAnimation(.spring()) {
-                                            offset = .zero
-                                        }
+                                            offsetCard = .zero
                                     }
                                 }
                         )
                 }
-                ArrowButton(offset: $offset)
+                ArrowButton(offset: $offsetCard)
                 
             }
-            if isShowing {
-                Detale(namespace: namespace, appear: appear)
-                    .offset(y: viewState.height)
-                    .padding(.top, 50)
+            if isShowingDetale {
+                Detale(offset: $offsetCard, isShowing: $isShowingDetale, showBuyView: $showBuyView, offsetBuy: $offsetBuy, namespace: namespace, appear: appearDetale)
                     .onAppear() {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            appear = true
+                                appearDetale = true
                         }
                     }
                     .onDisappear() {
-                        appear = false
+                            appearDetale = false
                     }
             }
+                BuyView()
+                    .background(Color.white)
+                    .cornerRadius(25)
+                    .offset(y: showBuyView ? 0 : 1000)
+                    .offset(offsetBuy)
+                    .animation(.spring())
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                offsetBuy = value.translation
+                            }
+                            .onEnded { value in
+                                if offsetBuy.height > 200 {
+                                    offsetBuy = CGSize(width: 0, height: 1000)
+                                    showBuyView = false
+                                } else {
+                                    offsetBuy = .zero
+                                }
+                            }
+                    )
+                    .padding(.top, 40)
         }
         .edgesIgnoringSafeArea(.all)
         .animation(.spring())
         .onTapGesture {
-            isShowing = true
+            isShowingDetale = true
         }
     }
     
@@ -79,7 +93,7 @@ struct ContentView: View {
     
     func getRotationAmount() -> Double {
         let max = UIScreen.main.bounds.width / 2
-        let currentAmount = offset.width
+        let currentAmount = offsetCard.width
         let percentage = Double(currentAmount / max)
         let maxAngle: Double = 10
         return percentage * maxAngle

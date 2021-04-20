@@ -15,15 +15,15 @@ struct Card: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
+                .matchedGeometryEffect(id: "rectangle", in: namespace)
                 .frame(width: 300, height: 400)
                 .shadow(color: .black, radius: 20, x: 10, y: 10)
                 .foregroundColor(color)
-                .matchedGeometryEffect(id: "rectangle", in: namespace)
             HStack(spacing: 10) {
                 Image(image)
                     .resizable()
-                    .frame(width: 100, height: 100)
                     .matchedGeometryEffect(id: "image", in: namespace)
+                    .frame(width: 100, height: 100)
                 Text("SwiftUI")
                     .font(.title)
                     .fontWeight(.bold)
