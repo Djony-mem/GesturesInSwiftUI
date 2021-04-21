@@ -11,12 +11,14 @@ struct BuyView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Поздравляю, вы приобрели курс!")
+            Text("Поздравляем!")
+                .font(.largeTitle)
+            Text("Курс успешно оплачен 🎉")
                 .font(.title)
-                .foregroundColor(.orange)
-                .multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity, maxHeight: 800)
+        .foregroundColor(.orange)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity - 200)
     }
 }
 
