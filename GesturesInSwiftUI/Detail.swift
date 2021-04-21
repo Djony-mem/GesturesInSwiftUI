@@ -26,7 +26,7 @@ struct Detail: View {
                         DismissButton(isShowing: $isShowing)
                             .padding(.top, 50)
                             .padding(.leading, 20)
-                            
+                        
                         Spacer()
                     }
                 }.frame(height: 70)
@@ -44,35 +44,35 @@ struct Detail: View {
                     .padding(.horizontal, 20)
                 
                 if appear {
-                        Text("Создание проекта и первый взгляд. Создание пользовательских представлений.")
-                            .font(.system(size: 20))
-                            .foregroundColor(.white)
-                        
-                        HStack(spacing: 15) {
-                            Button(action:{showNewView()} ) {
-                                Text("Купить блок")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .padding(.vertical)
-                                    .frame(width: UIScreen.main.bounds.width - 150)
-                                    .background(Color.orange)
-                                    .clipShape(Capsule())
-                            }
-                            
-                            Button(action: {}) {
-                                Image(systemName: "suit.heart.fill")
-                                    .font(.title)
-                                    .foregroundColor(Color.red)
-                                    .padding()
-                                    .background(Color.white)
-                                    .clipShape(Circle())
-                                    .shadow(radius: 3)
-                            }
+                    Text("Создание проекта и первый взгляд. Создание пользовательских представлений.")
+                        .font(.system(size: 20))
+                        .foregroundColor(.white)
+                    
+                    HStack(spacing: 15) {
+                        Button(action:{showNewView()} ) {
+                            Text("Купить блок")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 150)
+                                .background(Color.orange)
+                                .clipShape(Capsule())
                         }
-                        .padding(.top, 25)
-                        .padding(.bottom)
+                        
+                        Button(action: {}) {
+                            Image(systemName: "suit.heart.fill")
+                                .font(.title)
+                                .foregroundColor(Color.red)
+                                .padding()
+                                .background(Color.white)
+                                .clipShape(Circle())
+                                .shadow(radius: 3)
+                        }
                     }
-                    Spacer()
+                    .padding(.top, 25)
+                    .padding(.bottom)
+                }
+                Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
