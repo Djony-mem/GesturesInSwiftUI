@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BuyView: View {
-    
     var body: some View {
         VStack(spacing: 20) {
             Text("Поздравляем!")
@@ -16,9 +15,12 @@ struct BuyView: View {
             Text("Курс успешно оплачен 🎉")
                 .font(.title)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(25)
+        .animation(.spring())
         .foregroundColor(.orange)
         .multilineTextAlignment(.center)
-        .frame(maxWidth: .infinity, maxHeight: .infinity - 200)
     }
 }
 
