@@ -1,5 +1,5 @@
 //
-//  Detale.swift
+//  Detail.swift
 //  GesturesInSwiftUI
 //
 //  Created by brubru on 18.04.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Detale: View {
+struct Detail: View {
     @Binding var offset: CGSize
     @Binding var isShowing: Bool
     @Binding var showBuyView: Bool
@@ -22,7 +22,7 @@ struct Detale: View {
             VStack(spacing: 12) {
                 HStack {
                     if appear {
-                        DissmisButton(isShowing: $isShowing)
+                        DismissButton(isShowing: $isShowing)
                             .padding(.top, 50)
                             .padding(.leading, 20)
                             
@@ -88,7 +88,7 @@ struct Detale: View {
 
 struct Detale_Previews: PreviewProvider {
     static var previews: some View {
-        Detale(
+        Detail(
             offset: .constant(CGSize.zero),
             isShowing: .constant(true),
             showBuyView: .constant(false),

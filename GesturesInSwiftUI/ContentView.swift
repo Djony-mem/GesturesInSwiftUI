@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var offsetCard = CGSize.zero
     @State private var offsetBuy = CGSize.zero
-    @State private var isShowingDetale = false
+    @State private var isShowingDetail = false
     @State private var showBuyView = false
     @State private var appearDetale = false
     
@@ -47,10 +47,10 @@ struct ContentView: View {
                 ArrowButton(offset: $offsetCard)
                 
             }
-            if isShowingDetale {
-                Detale(
+            if isShowingDetail {
+                Detail(
                     offset: $offsetCard,
-                    isShowing: $isShowingDetale,
+                    isShowing: $isShowingDetail,
                     showBuyView: $showBuyView,
                     offsetBuy: $offsetBuy,
                     appear: appearDetale
@@ -89,7 +89,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
         .animation(.spring())
         .onTapGesture {
-            isShowingDetale = true
+            isShowingDetail = true
         }
     }
     
