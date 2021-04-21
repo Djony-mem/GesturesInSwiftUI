@@ -13,9 +13,10 @@ struct Detail: View {
     @Binding var showBuyView: Bool
     @Binding var offsetBuy: CGSize
     
+    var namespace: Namespace.ID
     var appear: Bool
     
-    @Namespace private var namespace
+//    @Namespace private var namespace
     
     var body: some View {
         ZStack {
@@ -86,14 +87,15 @@ struct Detail: View {
     }
 }
 
-struct Detale_Previews: PreviewProvider {
-    static var previews: some View {
-        Detail(
-            offset: .constant(CGSize.zero),
-            isShowing: .constant(true),
-            showBuyView: .constant(false),
-            offsetBuy: .constant(CGSize.zero),
-            appear: false
-        )
-    }
-}
+//struct Detale_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Detail(
+//            offset: .constant(CGSize.zero),
+//            isShowing: .constant(true),
+//            showBuyView: .constant(false),
+//            offsetBuy: .constant(CGSize.zero),
+//            namespace: Namespace.ID,
+//            appear: false
+//        )
+//    }
+//}

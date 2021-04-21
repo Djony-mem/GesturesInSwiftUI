@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var isShowingDetail = false
     @State private var showBuyView = false
     @State private var appearDetale = false
+    @Namespace private var namespace
     
     var body: some View {
         let width = UIScreen.main.bounds.width
@@ -25,7 +26,7 @@ struct ContentView: View {
             
             VStack(spacing: 40) {
                 ZStack {
-                    Card(color: .black, image: "10")
+                    Card(namespace: namespace, color: .black, image: "10")
                         .animation(.spring())
                         .offset(offsetCard)
 //                        .scaleEffect(getScaleAmount())
@@ -53,6 +54,7 @@ struct ContentView: View {
                     isShowing: $isShowingDetail,
                     showBuyView: $showBuyView,
                     offsetBuy: $offsetBuy,
+                    namespace: namespace,
                     appear: appearDetale
                 )
                     .onAppear() {

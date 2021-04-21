@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Card: View {
-    @Namespace private var namespace
+//    @Namespace private var namespace
+    var namespace: Namespace.ID
     
     var color: Color
     var image: String
@@ -37,8 +38,8 @@ struct Card: View {
     }
 }
 
-struct Card_Previews: PreviewProvider {
-    static var previews: some View {
-        Card(color: .black, image: "10")
-    }
-}
+//struct Card_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Card(color: .black, image: "10")
+//    }
+//}
