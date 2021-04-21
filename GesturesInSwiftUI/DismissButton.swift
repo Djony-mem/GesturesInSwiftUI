@@ -11,7 +11,7 @@ struct DismissButton: View {
     @Binding var isShowing: Bool
     
     var body: some View {
-        Button(action: {dissmisView()}){
+        Button(action: dissmisView) {
             Image(systemName: "chevron.left")
                 .font(.system(size: 30, weight: .bold))
                 .foregroundColor(.orange)
@@ -20,9 +20,10 @@ struct DismissButton: View {
         }
         
     }
-    func dissmisView() {
+    
+    private func dissmisView() {
         withAnimation {
-            isShowing = false
+            isShowing.toggle()
         }
     }
 }

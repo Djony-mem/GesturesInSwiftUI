@@ -102,7 +102,7 @@ struct ContentView: View {
 //        return 1.0 - min(percentage, 0.5) * 0.5
 //    }
     
-    func getRotationAmount() -> Double {
+    private func getRotationAmount() -> Double {
         let max = UIScreen.main.bounds.width / 2
         let currentAmount = offsetCard.width
         let percentage = Double(currentAmount / max)
