@@ -13,7 +13,6 @@ struct ContentView: View {
     @State private var isShowingDetale = false
     @State private var showBuyView = false
     @State private var appearDetale = false
-    @Namespace var namespace
     
     var body: some View {
         let width = UIScreen.main.bounds.width
@@ -22,7 +21,7 @@ struct ContentView: View {
             
             VStack(spacing: 40) {
                 ZStack {
-                    Card(color: .black, image: "10", namespace: namespace)
+                    Card(color: .black, image: "10")
                         .animation(.spring())
                         .offset(offsetCard)
 //                        .scaleEffect(getScaleAmount())
@@ -45,7 +44,13 @@ struct ContentView: View {
                 
             }
             if isShowingDetale {
-                Detale(offset: $offsetCard, isShowing: $isShowingDetale, showBuyView: $showBuyView, offsetBuy: $offsetBuy, namespace: namespace, appear: appearDetale)
+                Detale(
+                    offset: $offsetCard,
+                    isShowing: $isShowingDetale,
+                    showBuyView: $showBuyView,
+                    offsetBuy: $offsetBuy,
+                    appear: appearDetale
+                )
                     .onAppear() {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 appearDetale = true
