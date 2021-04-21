@@ -28,8 +28,8 @@ struct ArrowButton: View {
     }
 }
 
-//struct ArrowButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ArrowButton()
-//    }
-//}
+struct ArrowButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ArrowButton(offset: .constant(CGSize.zero))
+    }
+}

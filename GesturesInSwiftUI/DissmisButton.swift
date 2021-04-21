@@ -27,8 +27,8 @@ struct DissmisButton: View {
     }
 }
 
-//struct dissmisButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        dissmisButton()
-//    }
-//}
+struct dissmisButton_Previews: PreviewProvider {
+    static var previews: some View {
+        DissmisButton(isShowing: .constant(false))
+    }
+}

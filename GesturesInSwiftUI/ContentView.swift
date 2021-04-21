@@ -17,7 +17,11 @@ struct ContentView: View {
     var body: some View {
         let width = UIScreen.main.bounds.width
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.green, Color.pink]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.green, .pink]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
             
             VStack(spacing: 40) {
                 ZStack {
