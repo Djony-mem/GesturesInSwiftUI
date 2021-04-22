@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		0650629C262F53E600D2CC71 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650629B262F53E600D2CC71 /* DismissButton.swift */; };
 		065062A1262F64F100D2CC71 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065062A0262F64F100D2CC71 /* BuyView.swift */; };
-		0650A77C262CBF9A00AB4CDF /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650A77B262CBF9A00AB4CDF /* Detail.swift */; };
+		0650A77C262CBF9A00AB4CDF /* DetailViwe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650A77B262CBF9A00AB4CDF /* DetailViwe.swift */; };
 		0660CC6E262C5C6800DA9B8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660CC6D262C5C6800DA9B8C /* ContentView.swift */; };
 		0660CC70262C5C6B00DA9B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0660CC6F262C5C6B00DA9B8C /* Assets.xcassets */; };
 		0660CC73262C5C6B00DA9B8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0660CC72262C5C6B00DA9B8C /* Preview Assets.xcassets */; };
 		0660CC76262C5C6B00DA9B8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0660CC74262C5C6B00DA9B8C /* LaunchScreen.storyboard */; };
-		0660CC7F262C5F5300DA9B8C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660CC7E262C5F5300DA9B8C /* Card.swift */; };
+		0660CC7F262C5F5300DA9B8C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660CC7E262C5F5300DA9B8C /* CardView.swift */; };
 		0660CC82262CA2E700DA9B8C /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0660CC81262CA2E700DA9B8C /* ArrowButton.swift */; };
 		A8E5F546263025CE00909533 /* GesturesInSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E5F545263025CE00909533 /* GesturesInSwiftUIApp.swift */; };
 /* End PBXBuildFile section */
@@ -22,14 +22,14 @@
 /* Begin PBXFileReference section */
 		0650629B262F53E600D2CC71 /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
 		065062A0262F64F100D2CC71 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
-		0650A77B262CBF9A00AB4CDF /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		0650A77B262CBF9A00AB4CDF /* DetailViwe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViwe.swift; sourceTree = "<group>"; };
 		0660CC66262C5C6800DA9B8C /* GesturesInSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturesInSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0660CC6D262C5C6800DA9B8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0660CC6F262C5C6B00DA9B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0660CC72262C5C6B00DA9B8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0660CC75262C5C6B00DA9B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0660CC77262C5C6B00DA9B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0660CC7E262C5F5300DA9B8C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		0660CC7E262C5F5300DA9B8C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0660CC81262CA2E700DA9B8C /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
 		A8E5F545263025CE00909533 /* GesturesInSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesInSwiftUIApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,8 +66,8 @@
 			children = (
 				A8E5F545263025CE00909533 /* GesturesInSwiftUIApp.swift */,
 				0660CC6D262C5C6800DA9B8C /* ContentView.swift */,
-				0660CC7E262C5F5300DA9B8C /* Card.swift */,
-				0650A77B262CBF9A00AB4CDF /* Detail.swift */,
+				0660CC7E262C5F5300DA9B8C /* CardView.swift */,
+				0650A77B262CBF9A00AB4CDF /* DetailViwe.swift */,
 				0660CC81262CA2E700DA9B8C /* ArrowButton.swift */,
 				0650629B262F53E600D2CC71 /* DismissButton.swift */,
 				065062A0262F64F100D2CC71 /* BuyView.swift */,
@@ -162,8 +162,8 @@
 				A8E5F546263025CE00909533 /* GesturesInSwiftUIApp.swift in Sources */,
 				0660CC82262CA2E700DA9B8C /* ArrowButton.swift in Sources */,
 				0660CC6E262C5C6800DA9B8C /* ContentView.swift in Sources */,
-				0650A77C262CBF9A00AB4CDF /* Detail.swift in Sources */,
-				0660CC7F262C5F5300DA9B8C /* Card.swift in Sources */,
+				0650A77C262CBF9A00AB4CDF /* DetailViwe.swift in Sources */,
+				0660CC7F262C5F5300DA9B8C /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

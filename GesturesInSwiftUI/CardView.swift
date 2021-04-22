@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  CardView.swift
 //  GesturesInSwiftUI
 //
 //  Created by brubru on 18.04.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Card: View {
+struct CardView: View {
 //    @Namespace private var namespace
     var namespace: Namespace.ID
     

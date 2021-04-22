@@ -1,5 +1,5 @@
 //
-//  Detail.swift
+//  DetailViwe.swift
 //  GesturesInSwiftUI
 //
 //  Created by brubru on 18.04.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Detail: View {
+struct DetailViwe: View {
     @Binding var offset: CGSize
     @Binding var isShowing: Bool
     @Binding var showBuyView: Bool

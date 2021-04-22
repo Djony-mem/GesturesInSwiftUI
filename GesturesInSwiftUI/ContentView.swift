@@ -37,7 +37,7 @@ extension ContentView {
             )
             
             VStack(spacing: 40) {
-                Card(namespace: namespace, color: .black, image: "10")
+                CardView(namespace: namespace, color: .black, image: "10")
                     .offset(offsetCard)
                     .rotationEffect(Angle(degrees: getRotationAmount()))
                     .gesture(
@@ -57,7 +57,7 @@ extension ContentView {
             }
             
             if isShowingDetail {
-                Detail(
+                DetailViwe(
                     offset: $offsetCard,
                     isShowing: $isShowingDetail,
                     showBuyView: $isShowingBuyView,
