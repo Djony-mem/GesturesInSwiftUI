@@ -66,8 +66,8 @@
 			children = (
 				A8E5F545263025CE00909533 /* GesturesInSwiftUIApp.swift */,
 				0660CC6D262C5C6800DA9B8C /* ContentView.swift */,
-				0650A77B262CBF9A00AB4CDF /* Detail.swift */,
 				0660CC7E262C5F5300DA9B8C /* Card.swift */,
+				0650A77B262CBF9A00AB4CDF /* Detail.swift */,
 				0660CC81262CA2E700DA9B8C /* ArrowButton.swift */,
 				0650629B262F53E600D2CC71 /* DismissButton.swift */,
 				065062A0262F64F100D2CC71 /* BuyView.swift */,
