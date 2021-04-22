@@ -34,7 +34,6 @@ struct Card: View {
                 
             }
         }
-        
     }
 }
 

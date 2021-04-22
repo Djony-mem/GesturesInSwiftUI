@@ -36,7 +36,26 @@ extension ContentView {
                 endPoint: .bottom
             )
             
-            cardView
+            VStack(spacing: 40) {
+                Card(namespace: namespace, color: .black, image: "10")
+                    .offset(offsetCard)
+                    .animation(.spring())
+                    .rotationEffect(Angle(degrees: getRotationAmount()))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                offsetCard = value.translation
+                            }
+                            .onEnded { value in
+                                if value.translation.width > width / 2 {
+                                    offsetCard = CGSize(width: width, height: height)
+                                } else {
+                                    offsetCard = .zero
+                                }
+                            }
+                    )
+                ArrowButton(offset: $offsetCard)
+            }
             
             if isShowingDetail {
                 Detail(
@@ -78,31 +97,6 @@ extension ContentView {
         .animation(.spring())
         .onTapGesture {
             isShowingDetail.toggle()
-        }
-    }
-    
-    private var cardView: some View {
-        VStack(spacing: 40) {
-            ZStack {
-                Card(namespace: namespace, color: .black, image: "10")
-                    .animation(.spring())
-                    .offset(offsetCard)
-                    .rotationEffect(Angle(degrees: getRotationAmount()))
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                offsetCard = value.translation
-                            }
-                            .onEnded { value in
-                                if value.translation.width > width / 2 {
-                                    offsetCard = CGSize(width: width, height: height)
-                                } else {
-                                    offsetCard = .zero
-                                }
-                            }
-                    )
-            }
-            ArrowButton(offset: $offsetCard)
         }
     }
 }
