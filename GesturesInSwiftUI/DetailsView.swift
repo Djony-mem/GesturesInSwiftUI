@@ -43,6 +43,7 @@ struct DetailsView: View {
             
             if appear {
                 Text("Создание проекта и первый взгляд. Создание пользовательских представлений.")
+                    .transition(.scale)
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                 
@@ -67,6 +68,7 @@ struct DetailsView: View {
                             .shadow(radius: 3)
                     }
                 }
+                .transition(.scale)
                 .padding(.top, 25)
             }
             Spacer()

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var offsetCard = CGSize.zero
-    @State private var offsetBuy = CGSize.zero
-    @State private var isShowingDetail = false
+    @State private var offsetCardView = CGSize.zero
+    @State private var offsetBuyView = CGSize.zero
+    @State private var isShowingDetails = false
     @State private var isShowingBuyView = false
-    @State private var appearDetail = false
+    @State private var appearDetails = false
     @Namespace private var namespace
     
     private let width = UIScreen.main.bounds.width
@@ -20,7 +20,7 @@ struct ContentView: View {
     
     private func getRotationAmount() -> Double {
         let max = UIScreen.main.bounds.width / 2
-        let currentAmount = offsetCard.width
+        let currentAmount = offsetCardView.width
         let percentage = Double(currentAmount / max)
         let maxAngle: Double = 10
         return percentage * maxAngle
@@ -38,54 +38,54 @@ extension ContentView {
             
             VStack(spacing: 40) {
                 CardView(namespace: namespace, color: .black, image: "10")
-                    .offset(offsetCard)
+                    .offset(offsetCardView)
                     .rotationEffect(Angle(degrees: getRotationAmount()))
                     .gesture(
                         DragGesture()
                             .onChanged { value in
-                                offsetCard = value.translation
+                                offsetCardView = value.translation
                             }
                             .onEnded { _ in
-                                if offsetCard.width > width / 2 {
-                                    offsetCard = CGSize(width: width, height: height)
+                                if offsetCardView.width > width / 2 {
+                                    offsetCardView = CGSize(width: width, height: height)
                                 } else {
-                                    offsetCard = .zero
+                                    offsetCardView = .zero
                                 }
                             }
                     )
-                ArrowButton(offset: $offsetCard)
+                ArrowButton(offset: $offsetCardView)
             }
             
-            if isShowingDetail {
+            if isShowingDetails {
                 DetailsView(
-                    offset: $offsetCard,
-                    isShowing: $isShowingDetail,
+                    offset: $offsetCardView,
+                    isShowing: $isShowingDetails,
                     showBuyView: $isShowingBuyView,
                     namespace: namespace,
-                    appear: appearDetail
+                    appear: appearDetails
                 )
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        appearDetail.toggle()
+                        appearDetails.toggle()
                     }
                 }
                 .onDisappear {
-                    appearDetail.toggle()
+                    appearDetails.toggle()
                 }
             }
             BuyView()
-                .offset(offsetBuy)
+                .offset(offsetBuyView)
                 .offset(y: isShowingBuyView ? 0 : height)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            offsetBuy = value.translation
+                            offsetBuyView = value.translation
                         }
                         .onEnded { _ in
-                            if offsetBuy.height > height / 5 {
+                            if offsetBuyView.height > height / 5 {
                                 isShowingBuyView = false
                             } else {
-                                offsetBuy = .zero
+                                offsetBuyView = .zero
                             }
                         }
                 )
@@ -94,7 +94,7 @@ extension ContentView {
         .ignoresSafeArea()
         .animation(.spring())
         .onTapGesture {
-            isShowingDetail.toggle()
+            isShowingDetails.toggle()
         }
     }
 }
