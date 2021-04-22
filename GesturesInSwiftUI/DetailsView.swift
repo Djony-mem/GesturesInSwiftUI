@@ -14,9 +14,7 @@ struct DetailsView: View {
     
     var namespace: Namespace.ID
     var appear: Bool
-    
-//    @Namespace private var namespace
-    
+        
     var body: some View {
         VStack(spacing: 12) {
             HStack {
@@ -76,7 +74,7 @@ struct DetailsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Color.black
-                .matchedGeometryEffect(id: "rectangle", in: namespace)
+                .matchedGeometryEffect(id: "background", in: namespace)
         )
     }
 }

@@ -40,6 +40,9 @@ extension ContentView {
                 CardView(namespace: namespace, color: .black, image: "10")
                     .offset(offsetCardView)
                     .rotationEffect(Angle(degrees: getRotationAmount()))
+                    .onTapGesture {
+                        isShowingDetails.toggle()
+                    }
                     .gesture(
                         DragGesture()
                             .onChanged { value in
@@ -93,9 +96,6 @@ extension ContentView {
         }
         .ignoresSafeArea()
         .animation(.spring())
-        .onTapGesture {
-            isShowingDetails.toggle()
-        }
     }
 }
 

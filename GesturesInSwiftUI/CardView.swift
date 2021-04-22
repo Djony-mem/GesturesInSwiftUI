@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct CardView: View {
-//    @Namespace private var namespace
     var namespace: Namespace.ID
-    
     var color: Color
     var image: String
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
-                .matchedGeometryEffect(id: "rectangle", in: namespace)
+                .matchedGeometryEffect(id: "background", in: namespace)
                 .frame(width: 300, height: 400)
                 .shadow(color: .black, radius: 20, x: 10, y: 10)
                 .foregroundColor(color)
