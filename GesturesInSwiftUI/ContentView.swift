@@ -57,7 +57,7 @@ extension ContentView {
             }
             
             if isShowingDetail {
-                DetailViwe(
+                DetailsView(
                     offset: $offsetCard,
                     isShowing: $isShowingDetail,
                     showBuyView: $isShowingBuyView,
