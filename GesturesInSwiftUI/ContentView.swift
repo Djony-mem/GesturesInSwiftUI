@@ -39,15 +39,14 @@ extension ContentView {
             VStack(spacing: 40) {
                 Card(namespace: namespace, color: .black, image: "10")
                     .offset(offsetCard)
-                    .animation(.spring())
                     .rotationEffect(Angle(degrees: getRotationAmount()))
                     .gesture(
                         DragGesture()
                             .onChanged { value in
                                 offsetCard = value.translation
                             }
-                            .onEnded { value in
-                                if value.translation.width > width / 2 {
+                            .onEnded { _ in
+                                if offsetCard.width > width / 2 {
                                     offsetCard = CGSize(width: width, height: height)
                                 } else {
                                     offsetCard = .zero
