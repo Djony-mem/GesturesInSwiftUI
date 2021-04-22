@@ -37,25 +37,27 @@ extension ContentView {
             )
             
             VStack(spacing: 40) {
-                CardView(namespace: namespace, color: .black, image: "10")
-                    .offset(offsetCardView)
-                    .rotationEffect(Angle(degrees: getRotationAmount()))
-                    .onTapGesture {
-                        isShowingDetails.toggle()
-                    }
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                offsetCardView = value.translation
-                            }
-                            .onEnded { _ in
-                                if offsetCardView.width > width / 2 {
-                                    offsetCardView = CGSize(width: width, height: height)
-                                } else {
-                                    offsetCardView = .zero
+                if !isShowingDetails {
+                    CardView(namespace: namespace, color: .black, image: "10")
+                        .offset(offsetCardView)
+                        .rotationEffect(Angle(degrees: getRotationAmount()))
+                        .onTapGesture {
+                            isShowingDetails.toggle()
+                        }
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    offsetCardView = value.translation
                                 }
-                            }
+                                .onEnded { _ in
+                                    if offsetCardView.width > width / 2 {
+                                        offsetCardView = CGSize(width: width, height: height)
+                                    } else {
+                                        offsetCardView = .zero
+                                    }
+                                }
                     )
+                }
                 ArrowButton(offset: $offsetCardView)
             }
             
@@ -76,6 +78,7 @@ extension ContentView {
                     appearDetails.toggle()
                 }
             }
+            
             BuyView()
                 .offset(offsetBuyView)
                 .offset(y: isShowingBuyView ? 0 : height)
