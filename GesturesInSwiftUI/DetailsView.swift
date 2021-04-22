@@ -11,7 +11,6 @@ struct DetailsView: View {
     @Binding var offset: CGSize
     @Binding var isShowing: Bool
     @Binding var showBuyView: Bool
-    @Binding var offsetBuy: CGSize
     
     var namespace: Namespace.ID
     var appear: Bool

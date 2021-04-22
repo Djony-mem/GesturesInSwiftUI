@@ -61,7 +61,6 @@ extension ContentView {
                     offset: $offsetCard,
                     isShowing: $isShowingDetail,
                     showBuyView: $isShowingBuyView,
-                    offsetBuy: $offsetBuy,
                     namespace: namespace,
                     appear: appearDetail
                 )
