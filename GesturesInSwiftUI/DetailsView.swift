@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailsView: View {
     @Binding var offset: CGSize
     @Binding var isShowing: Bool
-    @Binding var showBuyView: Bool
+    @Binding var buyViewIsPresented: Bool
     
     var namespace: Namespace.ID
     var appear: Bool
@@ -46,7 +46,7 @@ struct DetailsView: View {
                     .foregroundColor(.white)
                 
                 HStack(spacing: 15) {
-                    Button(action: { showBuyView.toggle() }) {
+                    Button(action: showBuyView) {
                         Text("Купить блок")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -76,6 +76,11 @@ struct DetailsView: View {
             Color.black
                 .matchedGeometryEffect(id: "background", in: namespace)
         )
+    }
+    
+    private func showBuyView() {
+        offset = .zero
+        buyViewIsPresented.toggle()
     }
 }
 

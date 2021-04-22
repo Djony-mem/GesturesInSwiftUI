@@ -63,9 +63,9 @@ extension ContentView {
             
             if isShowingDetails {
                 DetailsView(
-                    offset: $offsetCardView,
+                    offset: $offsetBuyView,
                     isShowing: $isShowingDetails,
-                    showBuyView: $isShowingBuyView,
+                    buyViewIsPresented: $isShowingBuyView,
                     namespace: namespace,
                     appear: appearDetails
                 )
