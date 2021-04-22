@@ -1,5 +1,5 @@
 //
-//  dissmisButton.swift
+//  DismissButton.swift
 //  GesturesInSwiftUI
 //
 //  Created by brubru on 20.04.2021.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct DissmisButton: View {
+struct DismissButton: View {
     @Binding var isShowing: Bool
     
     var body: some View {
-        Button(action: {dissmisView()}){
+        Button(action: dismissView) {
             Image(systemName: "chevron.left")
                 .font(.system(size: 30, weight: .bold))
                 .foregroundColor(.orange)
@@ -20,15 +20,16 @@ struct DissmisButton: View {
         }
         
     }
-    func dissmisView() {
+    
+    private func dismissView() {
         withAnimation {
-            isShowing = false
+            isShowing.toggle()
         }
     }
 }
 
-//struct dissmisButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        dissmisButton()
-//    }
-//}
+struct dissmisButton_Previews: PreviewProvider {
+    static var previews: some View {
+        DismissButton(isShowing: .constant(false))
+    }
+}

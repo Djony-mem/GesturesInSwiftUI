@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  CardView.swift
 //  GesturesInSwiftUI
 //
 //  Created by brubru on 18.04.2021.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct Card: View {
+struct CardView: View {
+    var namespace: Namespace.ID
     var color: Color
     var image: String
-    var namespace: Namespace.ID
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
-                .matchedGeometryEffect(id: "rectangle", in: namespace)
+                .matchedGeometryEffect(id: "background", in: namespace)
                 .frame(width: 300, height: 400)
                 .shadow(color: .black, radius: 20, x: 10, y: 10)
                 .foregroundColor(color)
@@ -32,12 +32,12 @@ struct Card: View {
                 
             }
         }
-        
+        .animation(.spring())
     }
 }
 
 //struct Card_Previews: PreviewProvider {
 //    static var previews: some View {
-//        Card(color: .black, image: "1")
+//        Card(color: .black, image: "10")
 //    }
 //}

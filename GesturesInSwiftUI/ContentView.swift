@@ -8,95 +8,97 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var offsetCard = CGSize.zero
-    @State private var offsetBuy = CGSize.zero
-    @State private var isShowingDetale = false
-    @State private var showBuyView = false
-    @State private var appearDetale = false
-    @Namespace var namespace
+    @State private var offsetCardView = CGSize.zero
+    @State private var offsetBuyView = CGSize.zero
+    @State private var isShowingDetails = false
+    @State private var isShowingBuyView = false
+    @State private var appearDetails = false
+    @Namespace private var namespace
     
-    var body: some View {
-        let width = UIScreen.main.bounds.width
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.green, Color.pink]), startPoint: .top, endPoint: .bottom)
-            
-            VStack(spacing: 40) {
-                ZStack {
-                    Card(color: .black, image: "10", namespace: namespace)
-                        .animation(.spring())
-                        .offset(offsetCard)
-//                        .scaleEffect(getScaleAmount())
-                        .rotationEffect(Angle(degrees: getRotationAmount()))
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                        offsetCard = value.translation
-                                }
-                                .onEnded { value in
-                                    if value.translation.width > width / 2 {
-                                            offsetCard = CGSize(width: 1000, height: 1000)
-                                    } else {
-                                            offsetCard = .zero
-                                    }
-                                }
-                        )
-                }
-                ArrowButton(offset: $offsetCard)
-                
-            }
-            if isShowingDetale {
-                Detale(offset: $offsetCard, isShowing: $isShowingDetale, showBuyView: $showBuyView, offsetBuy: $offsetBuy, namespace: namespace, appear: appearDetale)
-                    .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                appearDetale = true
-                        }
-                    }
-                    .onDisappear() {
-                            appearDetale = false
-                    }
-            }
-                BuyView()
-                    .background(Color.white)
-                    .cornerRadius(25)
-                    .offset(y: showBuyView ? 0 : 1000)
-                    .offset(offsetBuy)
-                    .animation(.spring())
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                offsetBuy = value.translation
-                            }
-                            .onEnded { value in
-                                if offsetBuy.height > 200 {
-                                    offsetBuy = CGSize(width: 0, height: 1000)
-                                    showBuyView = false
-                                } else {
-                                    offsetBuy = .zero
-                                }
-                            }
-                    )
-                    .padding(.top, 40)
-        }
-        .edgesIgnoringSafeArea(.all)
-        .animation(.spring())
-        .onTapGesture {
-            isShowingDetale = true
-        }
-    }
+    private let width = UIScreen.main.bounds.width
+    private let height = UIScreen.main.bounds.height
     
-//    func getScaleAmount() -> CGFloat {
-//        let max = UIScreen.main.bounds.width / 2
-//        let currentAmount = abs(offset.width)
-//        let percentage = currentAmount / max
-//        return 1.0 - min(percentage, 0.5) * 0.5
-//    }
-    
-    func getRotationAmount() -> Double {
+    private func getRotationAmount() -> Double {
         let max = UIScreen.main.bounds.width / 2
-        let currentAmount = offsetCard.width
+        let currentAmount = offsetCardView.width
         let percentage = Double(currentAmount / max)
         let maxAngle: Double = 10
         return percentage * maxAngle
+    }
+}
+
+extension ContentView {
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.green, .pink]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            
+            VStack(spacing: 40) {
+                if !isShowingDetails {
+                    CardView(namespace: namespace, color: .black, image: "10")
+                        .offset(offsetCardView)
+                        .rotationEffect(Angle(degrees: getRotationAmount()))
+                        .onTapGesture {
+                            isShowingDetails.toggle()
+                        }
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    offsetCardView = value.translation
+                                }
+                                .onEnded { _ in
+                                    if offsetCardView.width > width / 2 {
+                                        offsetCardView = CGSize(width: width, height: height)
+                                    } else {
+                                        offsetCardView = .zero
+                                    }
+                                }
+                    )
+                }
+                ArrowButton(offset: $offsetCardView)
+            }
+            
+            if isShowingDetails {
+                DetailsView(
+                    offset: $offsetBuyView,
+                    isShowing: $isShowingDetails,
+                    buyViewIsPresented: $isShowingBuyView,
+                    namespace: namespace,
+                    appear: appearDetails
+                )
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        appearDetails.toggle()
+                    }
+                }
+                .onDisappear {
+                    appearDetails.toggle()
+                }
+            }
+            
+            BuyView()
+                .offset(offsetBuyView)
+                .offset(y: isShowingBuyView ? 0 : height)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            offsetBuyView = value.translation
+                        }
+                        .onEnded { _ in
+                            if offsetBuyView.height > height / 5 {
+                                isShowingBuyView = false
+                            } else {
+                                offsetBuyView = .zero
+                            }
+                        }
+                )
+                .padding(.top, 40)
+        }
+        .ignoresSafeArea()
+        .animation(.spring())
     }
 }
 

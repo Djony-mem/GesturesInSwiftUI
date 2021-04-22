@@ -11,7 +11,7 @@ struct ArrowButton: View {
     @Binding var offset: CGSize
     
     var body: some View {
-        Button(action: {resetViews()}){
+        Button(action: resetViews) {
             Image(systemName: "arrow.left")
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundColor(.white)
@@ -21,15 +21,16 @@ struct ArrowButton: View {
                 .shadow(radius: 8)
         }
     }
-    func resetViews() {
+    
+    private func resetViews() {
         withAnimation {
             offset = .zero
         }
     }
 }
 
-//struct ArrowButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ArrowButton()
-//    }
-//}
+struct ArrowButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ArrowButton(offset: .constant(CGSize.zero))
+    }
+}
