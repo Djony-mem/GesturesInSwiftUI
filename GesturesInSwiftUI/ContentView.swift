@@ -76,15 +76,15 @@ extension ContentView {
                 }
             }
             BuyView()
+                .offset(offsetBuy)
                 .offset(y: isShowingBuyView ? 0 : height)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
                             offsetBuy = value.translation
                         }
-                        .onEnded { value in
-                            if offsetBuy.height > 200 {
-                                offsetBuy = CGSize(width: 0, height: height)
+                        .onEnded { _ in
+                            if offsetBuy.height > height / 5 {
                                 isShowingBuyView = false
                             } else {
                                 offsetBuy = .zero
